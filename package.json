@@ -1,0 +1,442 @@
+{
+  "name": "oracle-script-workspace",
+  "displayName": "%extension.displayName%",
+  "description": "%extension.description%",
+  "version": "0.0.1",
+  "publisher": "XiaYe",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XiaYeAI/oracle-script-workspace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/XiaYeAI/oracle-script-workspace/issues"
+  },
+  "homepage": "https://github.com/XiaYeAI/oracle-script-workspace#readme",
+  "keywords": [
+    "oracle",
+    "sql",
+    "database",
+    "plsql",
+    "vscode"
+  ],
+  "qna": "https://github.com/XiaYeAI/oracle-script-workspace/issues",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:sql",
+    "onView:oracleWorkspace.connections",
+    "onView:oracleWorkspace.results",
+    "onCommand:oracleWorkspace.runCurrentOrSelected",
+    "onCommand:oracleWorkspace.runScript",
+    "onCommand:oracleWorkspace.explainPlan",
+    "onCommand:oracleWorkspace.switchConnection",
+    "onCommand:oracleWorkspace.addConnection",
+    "onCommand:oracleWorkspace.addCustomConnection",
+    "onCommand:oracleWorkspace.addTnsConnection",
+    "onCommand:oracleWorkspace.manageConnections",
+    "onCommand:oracleWorkspace.editConnection",
+    "onCommand:oracleWorkspace.duplicateConnection",
+    "onCommand:oracleWorkspace.deleteConnection",
+    "onCommand:oracleWorkspace.testConnection",
+    "onCommand:oracleWorkspace.searchSchema",
+    "onCommand:oracleWorkspace.setCurrentScriptConnection",
+    "onCommand:oracleWorkspace.manageLicense",
+    "onCommand:oracleWorkspace.switchKeymapProfile",
+    "onCommand:oracleWorkspace.commit",
+    "onCommand:oracleWorkspace.rollback",
+    "onCommand:oracleWorkspace.openObjectDetails",
+    "onCommand:oracleWorkspace.refreshConnectionTree"
+  ],
+  "main": "./out/src/extension.js",
+  "l10n": "./l10n",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && mocha \"out/test/**/*.test.js\"",
+    "package": "vsce package",
+    "vscode:prepublish": "npm run compile"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "oracleWorkspace.runCurrentOrSelected",
+        "title": "%command.runCurrentOrSelected.title%",
+        "category": "%extension.category%",
+        "icon": "$(play)"
+      },
+      {
+        "command": "oracleWorkspace.runScript",
+        "title": "%command.runScript.title%",
+        "category": "%extension.category%",
+        "icon": "$(run-all)"
+      },
+      {
+        "command": "oracleWorkspace.explainPlan",
+        "title": "%command.explainPlan.title%",
+        "category": "%extension.category%",
+        "icon": "$(graph)"
+      },
+      {
+        "command": "oracleWorkspace.switchConnection",
+        "title": "%command.switchConnection.title%",
+        "category": "%extension.category%",
+        "icon": "$(database)"
+      },
+      {
+        "command": "oracleWorkspace.addConnection",
+        "title": "%command.addConnection.title%",
+        "category": "%extension.category%",
+        "icon": "$(add)"
+      },
+      {
+        "command": "oracleWorkspace.addCustomConnection",
+        "title": "%command.addCustomConnection.title%",
+        "category": "%extension.category%",
+        "icon": "$(add)"
+      },
+      {
+        "command": "oracleWorkspace.addTnsConnection",
+        "title": "%command.addTnsConnection.title%",
+        "category": "%extension.category%",
+        "icon": "$(references)"
+      },
+      {
+        "command": "oracleWorkspace.manageConnections",
+        "title": "%command.manageConnections.title%",
+        "category": "%extension.category%",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "oracleWorkspace.editConnection",
+        "title": "%command.editConnection.title%",
+        "category": "%extension.category%",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "oracleWorkspace.duplicateConnection",
+        "title": "%command.duplicateConnection.title%",
+        "category": "%extension.category%",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "oracleWorkspace.deleteConnection",
+        "title": "%command.deleteConnection.title%",
+        "category": "%extension.category%",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "oracleWorkspace.testConnection",
+        "title": "%command.testConnection.title%",
+        "category": "%extension.category%",
+        "icon": "$(plug)"
+      },
+      {
+        "command": "oracleWorkspace.manageLicense",
+        "title": "%command.manageLicense.title%",
+        "category": "%extension.category%",
+        "icon": "$(account)"
+      },
+      {
+        "command": "oracleWorkspace.searchSchema",
+        "title": "%command.searchSchema.title%",
+        "category": "%extension.category%",
+        "icon": "$(search)"
+      },
+      {
+        "command": "oracleWorkspace.setCurrentScriptConnection",
+        "title": "%command.setCurrentScriptConnection.title%",
+        "category": "%extension.category%",
+        "icon": "$(link)"
+      },
+      {
+        "command": "oracleWorkspace.switchKeymapProfile",
+        "title": "%command.switchKeymapProfile.title%",
+        "category": "%extension.category%"
+      },
+      {
+        "command": "oracleWorkspace.commit",
+        "title": "%command.commit.title%",
+        "category": "%extension.category%",
+        "icon": "$(check)"
+      },
+      {
+        "command": "oracleWorkspace.rollback",
+        "title": "%command.rollback.title%",
+        "category": "%extension.category%",
+        "icon": "$(discard)"
+      },
+      {
+        "command": "oracleWorkspace.openObjectDetails",
+        "title": "%command.openObjectDetails.title%",
+        "category": "%extension.category%"
+      },
+      {
+        "command": "oracleWorkspace.refreshConnectionTree",
+        "title": "%command.refreshConnectionTree.title%",
+        "category": "%extension.category%"
+      }
+    ],
+    "configuration": {
+      "title": "%configuration.title%",
+      "properties": {
+        "oracleWorkspace.keymapProfile": {
+          "type": "string",
+          "default": "sqlDeveloper",
+          "enum": [
+            "sqlDeveloper",
+            "plsqlDeveloper",
+            "custom"
+          ],
+          "description": "%configuration.keymapProfile.description%"
+        },
+        "oracleWorkspace.connections": {
+          "type": "array",
+          "default": [],
+          "description": "%configuration.connections.description%"
+        },
+        "oracleWorkspace.tnsnamesPaths": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "%configuration.tnsnamesPaths.description%"
+        },
+        "oracleWorkspace.clientProfiles": {
+          "type": "array",
+          "default": [],
+          "description": "%configuration.clientProfiles.description%"
+        },
+        "oracleWorkspace.clientMode": {
+          "type": "string",
+          "default": "thin",
+          "enum": [
+            "thin",
+            "thick"
+          ],
+          "description": "%configuration.clientMode.description%"
+        },
+        "oracleWorkspace.oracleClientLibraryDir": {
+          "type": "string",
+          "default": "",
+          "description": "%configuration.oracleClientLibraryDir.description%"
+        },
+        "oracleWorkspace.oracleClientConfigDir": {
+          "type": "string",
+          "default": "",
+          "description": "%configuration.oracleClientConfigDir.description%"
+        },
+        "oracleWorkspace.maxRows": {
+          "type": "number",
+          "default": 500,
+          "enum": [
+            100,
+            500,
+            1000
+          ],
+          "description": "%configuration.maxRows.description%"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "oracleWorkspace",
+          "title": "%viewContainer.title%",
+          "icon": "resources/database.svg"
+        }
+      ],
+      "panel": [
+        {
+          "id": "oracleWorkspaceResults",
+          "title": "%viewContainer.results.title%",
+          "icon": "resources/database.svg"
+        }
+      ]
+    },
+    "views": {
+      "oracleWorkspace": [
+        {
+          "id": "oracleWorkspace.connections",
+          "name": "%view.connections.name%"
+        },
+        {
+          "id": "oracleWorkspace.currentScript",
+          "name": "%view.currentScript.name%",
+          "type": "webview"
+        }
+      ],
+      "oracleWorkspaceResults": [
+        {
+          "id": "oracleWorkspace.results",
+          "name": "%view.results.name%",
+          "type": "webview"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "oracleWorkspace.connections",
+        "contents": "%viewsWelcome.connections.contents%",
+        "when": "view == oracleWorkspace.connections"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "oracleWorkspace.runCurrentOrSelected",
+          "when": "editorLangId == sql",
+          "group": "oracleWorkspace@1"
+        },
+        {
+          "command": "oracleWorkspace.explainPlan",
+          "when": "editorLangId == sql",
+          "group": "oracleWorkspace@2"
+        },
+        {
+          "command": "oracleWorkspace.openObjectDetails",
+          "when": "editorLangId == sql",
+          "group": "oracleWorkspace@3"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "oracleWorkspace.switchConnection",
+          "when": "editorLangId == sql",
+          "group": "navigation@1"
+        },
+        {
+          "command": "oracleWorkspace.runCurrentOrSelected",
+          "when": "editorLangId == sql",
+          "group": "navigation@2"
+        },
+        {
+          "command": "oracleWorkspace.explainPlan",
+          "when": "editorLangId == sql",
+          "group": "navigation@3"
+        },
+        {
+          "command": "oracleWorkspace.commit",
+          "when": "editorLangId == sql",
+          "group": "navigation@4"
+        },
+        {
+          "command": "oracleWorkspace.rollback",
+          "when": "editorLangId == sql",
+          "group": "navigation@5"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "oracleWorkspace.addConnection",
+          "when": "view == oracleWorkspace.connections",
+          "group": "navigation@1"
+        },
+        {
+          "command": "oracleWorkspace.refreshConnectionTree",
+          "when": "view == oracleWorkspace.connections",
+          "group": "navigation@2"
+        },
+        {
+          "command": "oracleWorkspace.searchSchema",
+          "when": "view == oracleWorkspace.connections",
+          "group": "navigation@3"
+        },
+        {
+          "command": "oracleWorkspace.manageConnections",
+          "when": "view == oracleWorkspace.connections",
+          "group": "navigation@4"
+        },
+        {
+          "command": "oracleWorkspace.manageLicense",
+          "when": "view == oracleWorkspace.connections",
+          "group": "navigation@5"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "oracleWorkspace.testConnection",
+          "when": "view == oracleWorkspace.connections && viewItem == oracleWorkspace.connection",
+          "group": "inline@1"
+        },
+        {
+          "command": "oracleWorkspace.editConnection",
+          "when": "view == oracleWorkspace.connections && viewItem == oracleWorkspace.connection",
+          "group": "inline@2"
+        },
+        {
+          "command": "oracleWorkspace.duplicateConnection",
+          "when": "view == oracleWorkspace.connections && viewItem == oracleWorkspace.connection",
+          "group": "inline@3"
+        },
+        {
+          "command": "oracleWorkspace.setCurrentScriptConnection",
+          "when": "view == oracleWorkspace.connections && viewItem == oracleWorkspace.connection",
+          "group": "inline@4"
+        },
+        {
+          "command": "oracleWorkspace.deleteConnection",
+          "when": "view == oracleWorkspace.connections && viewItem == oracleWorkspace.connection",
+          "group": "inline@5"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "oracleWorkspace.runCurrentOrSelected",
+        "key": "ctrl+enter",
+        "when": "editorTextFocus && editorLangId == sql && oracleWorkspace.keymapProfile == 'sqlDeveloper'"
+      },
+      {
+        "command": "oracleWorkspace.runCurrentOrSelected",
+        "key": "f8",
+        "when": "editorTextFocus && editorLangId == sql && oracleWorkspace.keymapProfile == 'sqlDeveloper'"
+      },
+      {
+        "command": "oracleWorkspace.explainPlan",
+        "key": "f5",
+        "when": "editorTextFocus && editorLangId == sql && oracleWorkspace.keymapProfile == 'sqlDeveloper'"
+      },
+      {
+        "command": "oracleWorkspace.runCurrentOrSelected",
+        "key": "f8",
+        "when": "editorTextFocus && editorLangId == sql && oracleWorkspace.keymapProfile == 'plsqlDeveloper'"
+      },
+      {
+        "command": "oracleWorkspace.explainPlan",
+        "key": "f5",
+        "when": "editorTextFocus && editorLangId == sql && oracleWorkspace.keymapProfile == 'plsqlDeveloper'"
+      },
+      {
+        "command": "oracleWorkspace.openObjectDetails",
+        "key": "f12",
+        "when": "editorTextFocus && editorLangId == sql"
+      }
+    ]
+  },
+  "dependencies": {
+    "oracledb": "^6.10.0"
+  },
+  "overrides": {
+    "diff": "9.0.0",
+    "serialize-javascript": "7.0.5"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^28.0.3",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.10.1",
+    "@types/oracledb": "^6.10.4",
+    "@types/vscode": "1.92.0",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.6.3",
+    "esbuild": "^0.27.0",
+    "jsdom": "^29.1.1",
+    "mocha": "^11.7.5",
+    "typescript": "^5.9.3"
+  }
+}

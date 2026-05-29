@@ -1,0 +1,15 @@
+KGDB_UAT =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = uat-host)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVICE_NAME = kgdbuat)
+    )
+  )
+
+HISDB =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = his-host)(PORT = 1521))
+    (CONNECT_DATA =
+      (SID = hisdb)
+    )
+  )
